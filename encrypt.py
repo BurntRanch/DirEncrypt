@@ -45,7 +45,7 @@ with open('out.tmp', 'rb') as src:
         f.seek(0)
         content = pad(src.read(), 16)
         # FILE FORMAT (might be modified later)
-        # ENCRYPTED ZIP FILE (dynamically sized) + SALT USED FOR ENCRYPTION KEY (16 bytes) + IV (16 bytes) + HASH (32 bytes) + IDENTIFIER (6 bytes)
-        f.write(aes_obj.encrypt(content) + salt + aes_obj.iv + sha256(content).digest() + b'ECD1.0')
+        # ENCRYPTED ZIP FILE (dynamically sized) + SALT USED FOR ENCRYPTION KEY (16 bytes) + IV (16 bytes) + HASH (32 bytes) + SECOND HASH (32 bytes) + IDENTIFIER (6 bytes)
+        f.write(aes_obj.encrypt(content) + salt + aes_obj.iv + sha256(content).digest() + sha256(content[:32]).digest() + b'ECD1.1')
 
 remove('out.tmp')
