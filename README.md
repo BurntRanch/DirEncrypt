@@ -28,10 +28,10 @@ what is the identifier? its to identify the format of the file, its usually ECD1
 If you were to store the headers as a C struct:
 ```c
 struct {
-  uint8_t salt[16]; // https://github.com/calccrypto/uint128_t
-  uint8_t hash1[32]; // https://github.com/calccrypto/uint256_t
-  uint8_t hash2[32]; // https://github.com/calccrypto/uint256_t
-  uint8_t hash3[32]; // https://github.com/calccrypto/uint256_t
-  uint8_t identifier[6];
+  uint8_t salt[16]; // not hex, dont treat it as a regular char array
+  uint8_t hash1[32];
+  uint8_t hash2[32];
+  uint8_t hash3[32];
+  uint8_t identifier[6]; // is a char array, feel free to print it.
 } ecd_headers;
 ```
