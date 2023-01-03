@@ -32,6 +32,6 @@ struct {
   uint256_t hash1; // https://github.com/calccrypto/uint256_t
   uint256_t hash2; // https://github.com/calccrypto/uint256_t
   uint256_t hash3; // https://github.com/calccrypto/uint256_t
-  uint48_t identifier; // https://github.com/ckormanyos/wide-integer
+  unsigned char identifier[6];
 } ecd_headers;
 ```
