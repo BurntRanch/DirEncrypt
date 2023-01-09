@@ -20,7 +20,7 @@ with open(ecd_file, 'rb') as file:
         file.seek(stat(ecd_file).st_size - 6)
         format = file.read(6)
         if format != b'ECD1.2':
-            if format.startswith('ECD'):
+            if format.startswith(b'ECD'):
                 print('Loading Legacy Pack..')
                 try:
                     exec(f'from {format.decode().replace(".", "_")} import process')
@@ -58,6 +58,6 @@ if content:
         file.write(unpad(content, 16))
 
     with ZipFile('_out.tmp') as z:
-        z.extractall('/')
+        z.extractall('.')
 
     remove('_out.tmp')

@@ -19,14 +19,14 @@ def isfile(s):
 def writeToZip(files):
     for r, d, f in walk(files):
         for file in f:
-            z.write(path.abspath(path.join(r, file)))
+            z.write(path.join(r, file))
         for folder in d:
             writeToZip(path.join(files, folder))
 
 def clearDir(files):
     for r, d, f in walk(files):
         for file in f:
-            remove(path.abspath(path.join(r, file)))
+            remove(path.join(r, file))
         for folder in d:
             clearDir(path.join(files, folder))
             rmdir(path.join(files, folder))
