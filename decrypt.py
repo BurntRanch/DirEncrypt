@@ -58,6 +58,6 @@ if content:
         file.write(unpad(content, 16))
 
     with ZipFile('_out.tmp') as z:
-        z.extractall('.')
+        z.extractall(input('Where would you like to extract this file? [For security, please do not type "/" if you do not trust this archive] '))
 
     remove('_out.tmp')
