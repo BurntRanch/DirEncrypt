@@ -6,7 +6,7 @@ requires pycryptodome and pycryptodomex. install it by the command
 `pip install pycryptodome pycryptodomex`
 
 # How To Use
-the usage it's very simple.
+the usage is very simple.
 
 ```python
 python3 encrypt.py #for encrypt the folder content
