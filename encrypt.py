@@ -19,7 +19,7 @@ def isfile(s):
 def writeToZip(files):
     for r, d, f in walk(files):
         for file in f:
-            z.write(path.join(r, file))
+            z.write(path.join(r, file), path.join(r.removeprefix(files), file))
         for folder in d:
             writeToZip(path.join(files, folder))
 

@@ -16,14 +16,14 @@ content = b''
 # ENCRYPTED ZIP FILE (dynamically sized) + SALT USED FOR ENCRYPTION KEY (16 bytes) + IV (16 bytes) + HASH (32 bytes) + IDENTIFIER (6 bytes)
 
 with open(ecd_file, 'rb') as file:
+    file.seek(stat(ecd_file).st_size - 6)
+    format = file.read(6)
     while True:
-        file.seek(stat(ecd_file).st_size - 6)
-        format = file.read(6)
         if format != b'ECD1.2':
             if format.startswith(b'ECD'):
                 print('Loading Legacy Pack..')
                 try:
-                    exec(f'from {format.decode().replace(".", "_")} import process')
+                    exec(f'from {path.normpath(format.decode().replace(".", "_"))} import process')
                     content = process(ecd_file, file)
                     if content == False:
                         continue
