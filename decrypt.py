@@ -7,7 +7,7 @@ from os import stat, remove, path
 from Crypto.Cipher.AES import new, MODE_CBC
 from Crypto.Util.Padding import unpad
 
-ecd_file = input("Insert .ecd (EnCrypted Directory) file: ")
+ecd_file = path.normpath(input("Insert .ecd (EnCrypted Directory) file: "))
 
 content = b''
 
@@ -23,7 +23,7 @@ with open(ecd_file, 'rb') as file:
             if format.startswith(b'ECD'):
                 print('Loading Legacy Pack..')
                 try:
-                    exec(f'from {path.normpath(format.decode().replace(".", "_"))} import process')
+                    exec(f'from {format.decode().replace(".", "_")} import process')
                     content = process(ecd_file, file)
                     if content == False:
                         continue

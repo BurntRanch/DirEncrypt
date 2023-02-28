@@ -9,7 +9,7 @@ from Crypto.Cipher.AES import new, MODE_CBC
 from Crypto.Util.Padding import pad
 from os import remove, rmdir, path, walk
 
-files = input("Insert directory name: ")
+files = path.normpath(input("Insert directory name: "))
 z = ZipFile('out.tmp', 'w')
 
 def isfile(s):
